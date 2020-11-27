@@ -5,7 +5,6 @@ from shipper.models import Shipper
 class Customer(models.Model):
     name         = models.CharField(max_length = 64, null = False)
     phone_number = models.CharField(max_length = 64, unique = True, null = False)
-    account      = models.CharField(max_length = 128, unique = True, null = False)
     password     = models.CharField(max_length = 256, null = True)
     new_address  = models.CharField(max_length = 256, null = False)
     old_address  = models.CharField(max_length = 256, null = False)
