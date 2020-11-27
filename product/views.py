@@ -45,7 +45,7 @@ class ProductView(View):
 
             Product(
                 name = input_name,
-                provider = Provider.objects.get(name = input_provider),
+                provider_id = Provider.objects.get(name = input_provider),
                 price = input_price,
                 stock = input_stock
             ).save()
