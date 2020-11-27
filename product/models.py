@@ -9,4 +9,4 @@ class Product(models.Model):
     name     = models.CharField(max_length = 256, unique = True)
     price    = models.IntegerField()
     stock    = models.IntegerField()
-    provider = models.ForeignKey(Provider, on_delete = models.CASCADE)
+    provider_id = models.ForeignKey(Provider, on_delete = models.CASCADE)
