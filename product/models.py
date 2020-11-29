@@ -6,7 +6,7 @@ class Provider(models.Model):
     phone_number    = models.CharField(max_length = 64)
 
 class Product(models.Model):
-    name     = models.CharField(max_length = 256, unique = True)
-    price    = models.IntegerField()
-    stock    = models.IntegerField()
+    name        = models.CharField(max_length = 256, unique = True)
+    price       = models.IntegerField()
+    stock       = models.IntegerField()
     provider_id = models.ForeignKey(Provider, on_delete = models.CASCADE)

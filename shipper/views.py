@@ -1,9 +1,9 @@
 import json
 
 from django.views import View
-from django.http import JsonResponse
+from django.http  import JsonResponse
 
-from .models import Shipper
+from .models         import Shipper
 from customer.models import Order
 
 class ShipperView(View):
@@ -16,16 +16,18 @@ class ShipperView(View):
 
             if Shipper.objects.filter(name = input_name).exists():
                 return JsonResponse({'message' : 'DUPLICATE_INFORMATION'}, status = 400)
+
             if Shipper.objects.filter(phone_number = input_phone_number).exists():
                 return JsonResponse({'message' : 'DUPLICATE_INFORMATION'}, status = 400)
 
             Shipper(
-                name = input_name,
+                name         = input_name,
                 phone_number = input_phone_number,
-                region = input_region
+                region       = input_region
             ).save()
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)
+
         return JsonResponse({'message' : 'SUCCESS'}, status = 200)
 
 class OrderView(View):
@@ -40,15 +42,15 @@ class OrderView(View):
 
         order_list = [{
             'order_id' : order.id,
-            'address' : order.address,
+            'address'  : order.address,
             'quantity' : order.quantity,
         } for order in check_orders]
         return JsonResponse({'message' : order_list}, status = 200)
 
     def post(self, request):
         try:
-            data = json.loads(request.body)
-            target_order_id = data['order_id']
+            data              = json.loads(request.body)
+            target_order_id   = data['order_id']
             target_shipper_id = data['shipper_id']
 
             if not(Order.objects.filter(id = target_order_id).exists()):
@@ -67,4 +69,5 @@ class OrderView(View):
             target_order.save()
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)
+
         return JsonResponse({'message' : 'SUCCESS'}, status = 200)
