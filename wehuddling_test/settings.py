@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'wehuddling_test.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wehuddling_db',
+        'NAME': 'wehuddling_db_1',
         'USER': 'root',
         'PASSWORD': 'dlwpEOELD852!',
         'HOST': 'my-database.cthsrjdgn39w.ap-northeast-2.rds.amazonaws.com',
